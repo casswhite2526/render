@@ -12,10 +12,10 @@ client.on('messageCreate', message => {
   // 起動
   if (message.content === '!mcstart') {
     axios.get(`${baseUrl}ec2-up`)
-      .then(response => {
+      .then((response) => {
         message.reply(`マイクラサーバを起動しました。IPは${response.data}です。`)
       })
-      .catch(err => {
+      .catch((err) => {
         message.reply('既に起動しています。')
       })
   }
@@ -23,10 +23,10 @@ client.on('messageCreate', message => {
   // 停止
 if (message.content === '!mcstop') {
   axios.get(`${baseUrl}ec2-down`)
-    .then(response => {
+    .then((response) => {
       message.reply(`マイクラサーバを停止しました。`)
   })
-  .catch(err => {
+  .catch((err) => {
     message.reply('既に停止しています。')
   })
 }
