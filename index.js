@@ -24,10 +24,10 @@ client.on('messageCreate', message => {
 if (message.content === '!mcstop') {
   axios.get(`${baseUrl}ec2-down`)
     .then((response) => {
-      message.reply(`マイクラサーバを停止しました。`)
+      message.reply('${response.data}')
   })
   .catch((err) => {
-    message.reply('既に停止しています。')
+    message.reply('${response.data}')
   })
 }
 
