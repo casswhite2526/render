@@ -13,7 +13,7 @@ client.on('messageCreate', message => {
   if (message.content === '!mcstart') {
     axios.get(`${baseUrl}ec2-up`)
       .then((response) => {
-        message.reply(`マイクラサーバを起動しました。`)
+        message.reply(`マイクラサーバを起動しました。IPは${response.data}です。`)
       })
       .catch((err) => {
         message.reply('既に起動しています。')
