@@ -16,7 +16,7 @@ client.on('messageCreate', message => {
         message.reply(`マイクラサーバを起動しました。IPは${response.data}です。`)
       })
       .catch((err) => {
-        message.reply('既に起動しています。')
+        message.reply('${response.data}')
       })
   }
 
