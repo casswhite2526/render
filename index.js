@@ -27,7 +27,7 @@ if (message.content === '!mcstop') {
       message.reply('${response.data}')
   })
   .catch((err) => {
-    message.reply('${response.data}')
+    message.reply('${response.statusText}')
   })
 }
 
