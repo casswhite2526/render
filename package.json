@@ -1,4 +1,3 @@
-
 {
   "name": "discord-app",
   "version": "1.0.0",
@@ -10,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "engines": {
-	  "node": "16.x"
+    "node": "16.x"
+  },
+  "dependencies": {
+	"axios": "^0.22.0",
+    "discord.js": "^13.6.0"
   }
 }
