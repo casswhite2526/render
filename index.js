@@ -20,7 +20,7 @@ client.on('messageCreate', message => {
 		message.reply('既に起動しています。'+err.response.data)
 		}
 		else {
-		message.reply(err.response.data)
+		message.reply('error'+err.response.data)
 		}
       })
   }
