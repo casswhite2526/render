@@ -17,7 +17,7 @@ client.on('messageCreate', message => {
       })
       .catch(err => {
 		if (err.response.status == 400) {
-		message.reply('既に起動しています。'+err.response.data)
+		message.reply('既に起動しています。IP:'+err.response.data)
 		}
 		else {
 		console.log(err.response.data)
@@ -30,10 +30,10 @@ client.on('messageCreate', message => {
 if (message.content === '!mcstop') {
   axios.get(`${baseUrl}ec2-down`)
     .then(res => {
-      message.reply('サーバーを停止しました。'+res.status)
+      message.reply('サーバーを停止しました。')
   })
   .catch(err　=> {
-    message.reply('既に停止しています。'+err.response.status)
+    message.reply('既に停止しています。')
   })
 }
 
