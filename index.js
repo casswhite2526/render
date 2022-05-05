@@ -27,7 +27,7 @@ if (message.content === '!mcstop') {
       message.reply('サーバーを停止しました。')
   })
   .catch(err　=> {
-    message.reply('${res.status} 既に停止しています。')
+    message.reply('res.status+既に停止しています。')
   })
 }
 
