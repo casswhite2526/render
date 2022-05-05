@@ -25,10 +25,10 @@ client.on('messageCreate', message => {
 if (message.content === '!mcstop') {
   axios.get(`${baseUrl}ec2-down`)
     .then(res => {
-      message.reply('サーバーを停止しました。')
+      message.reply('サーバーを停止しました。'+res.response.status)
   })
   .catch(err　=> {
-    message.reply('既に停止しています。')
+    message.reply('既に停止しています。'+err.response.status)
   })
 }
 
