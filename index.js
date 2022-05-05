@@ -20,6 +20,7 @@ client.on('messageCreate', message => {
 		message.reply('既に起動しています。'+err.response.data)
 		}
 		else {
+		console.log(err.response.data)
 		message.reply('error'+err.response.data)
 		}
       })
