@@ -16,8 +16,8 @@ client.on('messageCreate', message => {
         message.reply(`サーバーを起動しました。IPは${res.data}です。`)
       })
       .catch(err => {
-        //message.reply('既に起動しています。')
-	  message.reply(string(${responce.status}))
+        message.reply('既に起動しています。')
+	  //message.reply(string(${responce.status}))
       })
   }
 
