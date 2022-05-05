@@ -17,7 +17,7 @@ client.on('messageCreate', message => {
       })
       .catch(err => {
         message.reply('既に起動しています。')
-		//message.reply(responce.status)
+	  message.reply(string(${responce.status}))
       })
   }
 
