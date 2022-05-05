@@ -19,6 +19,9 @@ client.on('messageCreate', message => {
 		if (err.response.status == 400) {
 		message.reply('既に起動しています。'+err.response.data)
 		}
+		else {
+		message.reply(err.response.data)
+		}
       })
   }
 
