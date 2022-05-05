@@ -16,7 +16,7 @@ client.on('messageCreate', message => {
         message.reply(`サーバーを起動しました。IPは${res.data}です。`)
       })
       .catch(err => {
-        message.reply('既に起動しています。')
+        message.reply('${res.status} 既に起動しています。')
       })
   }
 
@@ -27,7 +27,7 @@ if (message.content === '!mcstop') {
       message.reply('サーバーを停止しました。')
   })
   .catch(err　=> {
-    message.reply('既に停止しています。')
+    message.reply('${res.status} 既に停止しています。')
   })
 }
 
