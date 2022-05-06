@@ -13,12 +13,12 @@ client.on('messageCreate', message => {
   if (message.content === '!mcstart') {
     axios.get(`${baseUrl}ec2-up`)
       .then(res => {
-        message.reply(`サーバーを起動しました。${res.data}`)
+        message.reply(`サーバーを起動しました。`)
 		message.reply(res.data)
       })
       .catch(err => {
 		if (err.response.status == 400) {
-		message.reply('既に起動しています。IP:'+err.response.data)
+		message.reply('既に起動しています。')
 		message.reply(err.response.data)
 		}
 		else {
