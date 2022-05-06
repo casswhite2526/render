@@ -45,7 +45,7 @@ if (message.content === '!mcstop') {
 }
 
 if (message.content === '!mcstatus') {
-	message.reply('${serverstatus}')
+	message.reply(serverstatus)
 }
 
 })
