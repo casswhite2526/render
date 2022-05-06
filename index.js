@@ -4,13 +4,14 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 import axios from 'axios'
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 
-var serverstatus
+
 
 client.once("ready", async () => {
   console.log("Ready!");
 })
 
 client.on('messageCreate', message => {
+  var serverstatus
   // 起動
   if (message.content === '!mcstart') {
     axios.get(`${baseUrl}ec2-up`)
