@@ -11,7 +11,7 @@ client.once("ready", async () => {
 })
 
 client.on('messageCreate', message => {
-  var serverstatus
+  var serverstatus = 'null'
   // 起動
   if (message.content === '!mcstart') {
     axios.get(`${baseUrl}ec2-up`)
@@ -45,7 +45,7 @@ if (message.content === '!mcstop') {
 }
 
 if (message.content === '!mcstatus') {
-	message.reply(serverstatus)
+	message.reply('${serverstatus}')
 }
 
 })
