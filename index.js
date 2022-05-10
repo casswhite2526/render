@@ -14,7 +14,7 @@ client.on('messageCreate', message => {
   // 起動
   if (message.content === '!mcstart') {
 	
-    axios.get(`${baseUrl}/ec2-up`)
+    axios.get(`${baseUrl}ec2-up`)
       .then(res => {
         message.reply(`サーバーを起動しました。`)
 		message.reply(res.data)
@@ -33,7 +33,7 @@ client.on('messageCreate', message => {
 
   // 停止
 if (message.content === '!mcstop') {
-	axios.get(`${baseUrl}/ec2-down`)
+	axios.get(`${baseUrl}ec2-down`)
     .then(res => {
       message.reply('サーバーを停止しました。')
 	  
@@ -44,7 +44,7 @@ if (message.content === '!mcstop') {
 }
 
 if (message.content === '!mcstatus') {
-	axios.get('${baseUrl}/ec2-status')
+	axios.get('${baseUrl}ec2-status')
 	.then(res => {
 		message.reply(res.data)
 })
