@@ -49,7 +49,7 @@ if (message.content === '!mcstatus') {
 		message.reply('hi')
 	})
 	.catch(err => {
-		message.reply('error')
+		message.reply('error'+err.response.data)
 	})	
 
 }
