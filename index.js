@@ -42,7 +42,7 @@ if (message.content === '!mcstop') {
     message.reply('既に停止しています。')
   })
 }
-if (message.content === '!mcsts') {
+if (message.content === '!mcstatus') {
 	axios.get(`${baseUrl}ec2-status`)
     .then(res => {
       message.reply(res.data)
