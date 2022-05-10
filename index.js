@@ -52,6 +52,18 @@ if (message.content === '!mcstatus') {
     message.reply('error'+err.response.data)
   })
 }
+
+if (message.content === '!mcip') {
+	axios.get(`${baseUrl}ec2-ip`)
+    .then(res => {
+      message.reply(res.data)
+	  
+  })
+  .catch(err　=> {
+    message.reply('サーバーは起動していません。')
+  })
+}
+
 })
 
 client.login(process.env.DISCORD_TOKEN)
