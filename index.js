@@ -44,10 +44,9 @@ if (message.content === '!mcstop') {
 }
 
 if (message.content === '!mcstatus') {
-	message.reply('hi1')
 	axios.get('${baseUrl}ec2-status')
 	.then(res => {
-		message.reply('hi2')
+		message.reply('hi')
 	})
 	.catch(err => {
 		message.reply('error')
