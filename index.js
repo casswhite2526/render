@@ -45,11 +45,11 @@ if (message.content === '!mcstop') {
 if (message.content === '!mcsts') {
 	axios.get(`${baseUrl}ec2-status`)
     .then(res => {
-      message.reply('hi1')
+      message.reply(res.data)
 	  
   })
   .catch(err　=> {
-    message.reply('hi2')
+    message.reply('error'+err.response.data)
   })
 }
 })
