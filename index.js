@@ -48,7 +48,7 @@ if (message.content === '!mcstatus') {
 	.then(res => {
 		message.reply(res.data)
 })
-
+}
 })
 
 client.login(process.env.DISCORD_TOKEN)
