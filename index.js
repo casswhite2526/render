@@ -11,14 +11,13 @@ client.once("ready", async () => {
 })
 
 client.on('messageCreate', message => {
-  var serverstatus
   // 起動
   if (message.content === '!mcstart') {
-    axios.get(`${baseUrl}ec2-up`)
+	
+    axios.get(`${baseUrl}/ec2-up`)
       .then(res => {
         message.reply(`サーバーを起動しました。`)
 		message.reply(res.data)
-		serverstatus = 'サーバー稼働中'
       })
       .catch(err => {
 		if (err.response.status == 400) {
@@ -34,10 +33,10 @@ client.on('messageCreate', message => {
 
   // 停止
 if (message.content === '!mcstop') {
-  axios.get(`${baseUrl}ec2-down`)
+	axios.get(`${baseUrl}/ec2-down`)
     .then(res => {
       message.reply('サーバーを停止しました。')
-	  serverstatus = 'サーバー停止中'
+	  
   })
   .catch(err　=> {
     message.reply('既に停止しています。')
@@ -45,7 +44,9 @@ if (message.content === '!mcstop') {
 }
 
 if (message.content === '!mcstatus') {
-	message.reply(serverstatus)
+	axios.get('${baseUrl}/ec2-status')
+	.then(res => {
+		message.reply(res.data))
 }
 
 })
