@@ -3,7 +3,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 
 import axios from 'axios'
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
-const discordbtn = require('disocrd.js-buttons')(client);
+import from 'disocrd.js-buttons'
 
 client.once("ready", async () => {
   console.log("Ready!");
