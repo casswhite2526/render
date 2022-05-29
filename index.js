@@ -7,7 +7,7 @@ const discordbtn = require('disocrd.js-buttons')(client);
 
 client.once("ready", async () => {
   console.log("Ready!");
-
+  message.channel.send('hi',startbutton)
 })
 
 const startbutton = new discordbtn.MessageButton()
