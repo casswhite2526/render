@@ -3,25 +3,10 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 
 import axios from 'axios'
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
-const discord = require('discord.js');
-const disbut = require('discord.js-buttons')(client);
 
 client.once("ready", async () => {
   console.log("Ready!");
-  message.channel.send('hi',startbutton)
 })
-
-const startbutton = new discordbtn.MessageButton()
-  .setStyle('green')
-  .setLabel('スタート')
-  .setID('start');
-
-
-clinent.on('clickButton', async(button) => {
-  if (button.id === 'start') {
-    message.reply('hi')
-  }
-});
 
 client.on('messageCreate', message => {
   // 起動
