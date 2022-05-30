@@ -28,7 +28,7 @@ const IPbtn = new MessageButton()
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
-    axios.get(`${baseUrl}ec2-up`)
+    //axios.get(`${baseUrl}ec2-up`)
     await interaction.reply({
       content: res.data, components: [
         new MessageActionRow().addComponents(stopbtn,IPbtn)
@@ -38,7 +38,7 @@ client.on('interactionCreate', async interaction => {
 
   //「停止」が押された時
   if (interaction.customId === 'stop') {
-    axios.get(`${baseUrl}ec2-down`)
+    //axios.get(`${baseUrl}ec2-down`)
     await interaction.reply({
       content: res.data, components: [
         new MessageActionRow().addComponents(start)
@@ -48,7 +48,7 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'stop') {
-    axios.get(`${baseUrl}ec2-ip`)
+    //axios.get(`${baseUrl}ec2-ip`)
     await interaction.reply(res.data)
   }
 })
