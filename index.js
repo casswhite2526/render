@@ -26,22 +26,30 @@ const IPbtn = new MessageButton()
 .setLabel("IP（クリップボードにコピー）")
 
 client.on('interactionCreate', async interaction => {
+  //「起動」が押された時
   if (interaction.customId === 'start') {
     axios.get(`${baseUrl}ec2-up`)
-    .then(res => {
-      message.reply(`サーバーを起動しました。`)
-		  message.reply(res.data)
+    await interaction.reply({
+      content: res.data, components: [
+        new MessageActionRow().addComponents(stopbtn,IPbtn)
+      ]
     })
-    .catch(err => {
-		  if (err.response.status == 400) {
-		    message.reply('既に起動しています。')
-		    message.reply(err.response.data)
-	  	}
-		  else {
-		    console.log(err.response.data)
-		    message.reply('error'+err.response.data)
-		  }
+  }
+
+  //「停止」が押された時
+  if (interaction.customId === 'stop') {
+    axios.get(`${baseUrl}ec2-down`)
+    await interaction.reply({
+      content: res.data, components: [
+        new MessageActionRow().addComponents(start)
+      ]
     })
+  }
+
+  //「IP」が押された時
+  if (interaction.customId === 'stop') {
+    axios.get(`${baseUrl}ec2-ip`)
+    await interaction.reply(res.data)
   }
 })
 
@@ -112,6 +120,7 @@ client.on('messageCreate', message => {
       message.reply('error'+err.response.data)
     })
   }
+
   // IP表示
   if (message.content === '!mcip') {
     axios.get(`${baseUrl}ec2-ip`)
