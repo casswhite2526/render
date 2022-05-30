@@ -22,7 +22,7 @@ client.on('messageCreate', message => {
     });
 
   }
-});
+
 
   // 起動
   if (message.content === '!mcstart') {
@@ -77,6 +77,6 @@ if (message.content === '!mcip') {
   })
 }
 
-
+});
 
 client.login(process.env.DISCORD_TOKEN)
