@@ -29,23 +29,27 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'start') {
     await interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
-    await wait(4000)
-    await interaction.editReply({
-      content: res.data, 
-      components: [
-        new MessageActionRow().addComponents(stopbtn,IPbtn)
-      ]
-    })
+    .then(res => {
+      await wait(4000)
+      await interaction.editReply({
+        content: res.data, 
+        components: [
+          new MessageActionRow().addComponents(stopbtn,IPbtn)
+        ]
+      })
+    })   
   }
 
   //「停止」が押された時
   if (interaction.customId === 'stop') {
     axios.get(`${baseUrl}ec2-down`)
-    await interaction.reply({
-      content: res.data, 
-      components: [
-        new MessageActionRow().addComponents(startbtn)
-      ]
+    .then(res => {
+      await interaction.reply({
+        content: res.data, 
+        components: [
+          new MessageActionRow().addComponents(startbtn)
+        ]
+      })
     })
   }
 
