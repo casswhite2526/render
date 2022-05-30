@@ -30,8 +30,6 @@ client.on('messageCreate', message => {
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
     .then(res => {
-      message.reply(res.data)
-
       if (res.data === 'サーバー停止済み'){
         message.reply({
           content: res.data, components: [
@@ -40,7 +38,7 @@ client.on('messageCreate', message => {
         })
       } 
 
-      if (res.data === 'サーバーは稼働中'){
+      else if (res.data === 'サーバーは稼働中'){
         message.reply({
           content: res.data, components: [
             new MessageActionRow().addComponents(stopbtn), 
@@ -49,11 +47,14 @@ client.on('messageCreate', message => {
         })
       }
 
+      else {
+        message.reply(
+          "The server is in procces. Plese try again later."
+        )
+      }
+
     })
   
-  .catch(err　=> {
-    message.reply('error'+err.response.data)
-    })
   }
   // 起動
   if (message.content === '!mcstart') {
@@ -82,8 +83,8 @@ if (message.content === '!mcstop') {
       message.reply('サーバーを停止しました。')
 	  
   })
-  .catch(err　=> {
-    message.reply('既に停止しています。')
+    .catch(err　=> {
+      message.reply('既に停止しています。')
   })
 }
 if (message.content === '!mcstatus') {
