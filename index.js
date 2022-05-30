@@ -37,9 +37,9 @@ client.on('messageCreate', message => {
         content: res.data, components: [
           new MessageActionRow().addComponents(startbtn)
         ]
-      })*/
+      })
     }
-/*
+
       if (res === 203){
         message.reply({
           content: res.data, components: [
