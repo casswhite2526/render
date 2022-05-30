@@ -30,7 +30,9 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'start') {
     //axios.get(`${baseUrl}ec2-up`)
     await interaction.reply({
-      content: res.data, components: [
+      //content: res.data, 
+      content: "start", 
+      components: [
         new MessageActionRow().addComponents(stopbtn,IPbtn)
       ]
     })
@@ -40,7 +42,9 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'stop') {
     //axios.get(`${baseUrl}ec2-down`)
     await interaction.reply({
-      content: res.data, components: [
+      //content: res.data, 
+      content: "stop", 
+      components: [
         new MessageActionRow().addComponents(start)
       ]
     })
