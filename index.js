@@ -51,7 +51,7 @@ client.on('interactionCreate', async interaction => {
   }
 
   //「IP」が押された時
-  if (interaction.customId === 'stop') {
+  if (interaction.customId === 'ip') {
     //axios.get(`${baseUrl}ec2-ip`)
     await interaction.reply(res.data)
   }
