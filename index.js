@@ -1,14 +1,9 @@
 import { Client, Intents } from 'discord.js'
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
-
-import axios from 'axios'
-const baseUrl = process.env.LAMBDA_INVOKE_PATH
-
 import { MessageActionRow, MessageButton } from 'discord.js'
+import axios from 'axios'
 
-client.once("ready", async () => {
-  console.log("Ready!");
-})
+const baseUrl = process.env.LAMBDA_INVOKE_PATH
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 const startbtn = new MessageButton()
   .setCustomId("start")
@@ -25,13 +20,17 @@ const IPbtn = new MessageButton()
 .setStyle("PRIMARY")
 .setLabel("IP")
 
+client.once("ready", async () => {
+  console.log("Ready!");
+})
+
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
     //axios.get(`${baseUrl}ec2-up`)
     await interaction.reply({
       //content: res.data, 
-      content: "サーバー起動中", 
+      content: "サーバー起動中 "+res.data, 
       components: [
         new MessageActionRow().addComponents(stopbtn,IPbtn)
       ]
@@ -54,10 +53,10 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'ip') {
     axios.get(`${baseUrl}ec2-ip`)
     .then(res => {
-    message.reply(res.data)
+    interaction.reply(res.data)
     })
     .catch(err　=> {
-    message.reply('サーバーは起動していません。')
+    interaction.reply('サーバーは起動していません。')
     })
   }
 })
