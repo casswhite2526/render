@@ -45,7 +45,7 @@ client.on('interactionCreate', async interaction => {
       //content: res.data, 
       content: "サーバー停止中", 
       components: [
-        new MessageActionRow().addComponents(start)
+        new MessageActionRow().addComponents(startbtn)
       ]
     })
   }
