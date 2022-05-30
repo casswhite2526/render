@@ -4,7 +4,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 import axios from 'axios'
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 
-const { MessageActionRow, MessageButton } = require('discord.js');
+import { MessageActionRow, MessageButton } from 'discord.js'
 
 client.once("ready", async () => {
   console.log("Ready!");
