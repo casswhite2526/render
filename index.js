@@ -31,7 +31,7 @@ client.on('interactionCreate', async interaction => {
     //axios.get(`${baseUrl}ec2-up`)
     await interaction.reply({
       //content: res.data, 
-      content: "start", 
+      content: "サーバー起動中", 
       components: [
         new MessageActionRow().addComponents(stopbtn,IPbtn)
       ]
@@ -43,7 +43,7 @@ client.on('interactionCreate', async interaction => {
     //axios.get(`${baseUrl}ec2-down`)
     await interaction.reply({
       //content: res.data, 
-      content: "stop", 
+      content: "サーバー停止中", 
       components: [
         new MessageActionRow().addComponents(start)
       ]
