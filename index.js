@@ -15,15 +15,38 @@ const startbtn = new MessageButton()
   .setStyle("PRIMARY")
   .setLabel("START")
 
+const stoptbtn = new MessageButton()
+.setCustomId("stop")
+.setStyle("PRIMARY")
+.setLabel("STOP")
+
+const IPbtn = new MessageButton()
+.setCustomId("ip")
+.setStyle("PRIMARY")
+.setLabel("IP")
 
 client.on('messageCreate', message => {
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
     .then(res => {
+      if (res === 201){
       message.reply({
-        content: res.data, components: [new MessageActionRow().addComponents(startbtn)]
+        content: res.data, components: [
+          new MessageActionRow().addComponents(startbtn)
+        ]
       })
+    }
+
+      if (res === 203){
+        message.reply({
+          content: res.data, components: [
+            new MessageActionRow().addComponents(stopbtn), 
+            new MessageActionRow().addComponents(IPbtn),
+          ]
+        })
+    }
   })
+  
   .catch(err　=> {
     message.reply('error'+err.response.data)
   })
