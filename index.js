@@ -48,7 +48,7 @@ client.on('interactionCreate', async interaction => {
     //.then(res => {
       await interaction.reply({
         //content: res.data, 
-        content: "stop"
+        content: "stop",
         components: [
           new MessageActionRow().addComponents(startbtn)
         ]
