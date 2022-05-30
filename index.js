@@ -4,11 +4,26 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 import axios from 'axios'
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 
+const { MessageActionRow, MessageButton } = require('discord.js');
+
 client.once("ready", async () => {
   console.log("Ready!");
 })
 
+const startbtn = new Discord.MessageButton()
+  .setCustomId("start")
+  .setStyle("PRIMARY")
+  .setLabel("START")
+
 client.on('messageCreate', message => {
+  if (message.content === '!mc') {
+    message.reply({
+    content: "hi", components: [startbtn]
+    });
+
+  }
+});
+
   // 起動
   if (message.content === '!mcstart') {
 	
