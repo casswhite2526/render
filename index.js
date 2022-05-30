@@ -31,8 +31,8 @@ client.on('messageCreate', message => {
     axios.get(`${baseUrl}ec2-status`)
     .then(res => {
       message.reply(res.data)
-/*
-      if (res === 201){
+
+      if (res.data === 'サーバー停止済み'){
       message.reply({
         content: res.data, components: [
           new MessageActionRow().addComponents(startbtn)
@@ -40,20 +40,21 @@ client.on('messageCreate', message => {
       })
     }
 
-      if (res === 203){
+      if (res.data === 'サーバーは稼働中'){
         message.reply({
           content: res.data, components: [
             new MessageActionRow().addComponents(stopbtn), 
             new MessageActionRow().addComponents(IPbtn),
           ]
         })
-    }*/
-  })
+      }
+
+    })
+  }
 
   .catch(err　=> {
     message.reply('error'+err.response.data)
   })
-  }
 
   // 起動
   if (message.content === '!mcstart') {
