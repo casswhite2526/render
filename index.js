@@ -15,7 +15,7 @@ const startbtn = new MessageButton()
   .setStyle("PRIMARY")
   .setLabel("START")
 
-const stoptbtn = new MessageButton()
+const stopbtn = new MessageButton()
 .setCustomId("stop")
 .setStyle("PRIMARY")
 .setLabel("STOP")
