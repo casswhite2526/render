@@ -23,7 +23,7 @@ const stopbtn = new MessageButton()
 const IPbtn = new MessageButton()
 .setCustomId("ip")
 .setStyle("PRIMARY")
-.setLabel("IP（クリップボードにコピー）")
+.setLabel("IP")
 
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
@@ -52,8 +52,13 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    //axios.get(`${baseUrl}ec2-ip`)
-    await interaction.reply(res.data)
+    axios.get(`${baseUrl}ec2-ip`)
+    .then(res => {
+      message.reply(res.data)
+    })
+    .catch(err　=> {
+    message.reply('サーバーは起動していません。')
+    })
   }
 })
 
