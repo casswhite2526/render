@@ -10,7 +10,7 @@ client.once("ready", async () => {
   console.log("Ready!");
 })
 
-const startbtn = new Discord.MessageButton()
+const startbtn = new MessageButton()
   .setCustomId("start")
   .setStyle("PRIMARY")
   .setLabel("START")
