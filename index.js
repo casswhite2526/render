@@ -18,7 +18,7 @@ const startbtn = new MessageButton()
 client.on('messageCreate', message => {
   if (message.content === '!mc') {
     message.reply({
-    content: "hi", components: [startbtn]
+    content: "hi", components: [new MessageActionRow().addComponents(startbtn)]
     });
 
   }
