@@ -26,19 +26,20 @@ const IPbtn = new MessageButton()
 .setLabel("IP")
 
 client.on('messageCreate', message => {
-/*
+
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
     .then(res => {
       message.reply(res.status)
+/*
       if (res === 201){
       message.reply({
         content: res.data, components: [
           new MessageActionRow().addComponents(startbtn)
         ]
-      })
+      })*/
     }
-
+/*
       if (res === 203){
         message.reply({
           content: res.data, components: [
@@ -46,7 +47,7 @@ client.on('messageCreate', message => {
             new MessageActionRow().addComponents(IPbtn),
           ]
         })
-    }
+    }*/
   })
 
   .catch(err　=> {
@@ -54,7 +55,6 @@ client.on('messageCreate', message => {
   })
   }
 
-*/
   // 起動
   if (message.content === '!mcstart') {
 	
