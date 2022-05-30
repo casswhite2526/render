@@ -33,12 +33,12 @@ client.on('messageCreate', message => {
       message.reply(res.data)
 
       if (res.data === 'サーバー停止済み'){
-      message.reply({
-        content: res.data, components: [
-          new MessageActionRow().addComponents(startbtn)
-        ]
-      })
-    }
+        message.reply({
+          content: res.data, components: [
+            new MessageActionRow().addComponents(startbtn)
+          ]
+        })
+      } 
 
       if (res.data === 'サーバーは稼働中'){
         message.reply({
@@ -50,12 +50,11 @@ client.on('messageCreate', message => {
       }
 
     })
-  }
-
+  
   .catch(err　=> {
     message.reply('error'+err.response.data)
-  })
-
+    })
+  }
   // 起動
   if (message.content === '!mcstart') {
 	
