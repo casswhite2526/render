@@ -54,10 +54,10 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'ip') {
     axios.get(`${baseUrl}ec2-ip`)
     .then(res => {
-    await interaction.reply(res.data)
+    interaction.reply(res.data)
     })
     .catch(err　=> {
-    await interaction.reply('サーバーは起動していません。')
+    interaction.reply('サーバーは起動していません。')
     })
   }
 })
