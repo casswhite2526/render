@@ -15,12 +15,18 @@ const startbtn = new MessageButton()
   .setStyle("PRIMARY")
   .setLabel("START")
 
+
 client.on('messageCreate', message => {
   if (message.content === '!mc') {
-    message.reply({
-    content: "hi", components: [new MessageActionRow().addComponents(startbtn)]
-    });
-
+    axios.get(`${baseUrl}ec2-status`)
+    .then(res => {
+      message.reply({
+        content: res.data, components: [new MessageActionRow().addComponents(startbtn)]
+      })
+  })
+  .catch(err　=> {
+    message.reply('error'+err.response.data)
+  })
   }
 
 
