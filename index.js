@@ -29,6 +29,7 @@ client.on('messageCreate', message => {
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
     .then(res => {
+      message.reply(res.status)
       if (res === 201){
       message.reply({
         content: res.data, components: [
@@ -46,7 +47,7 @@ client.on('messageCreate', message => {
         })
     }
   })
-  
+
   .catch(err　=> {
     message.reply('error'+err.response.data)
   })
