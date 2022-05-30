@@ -27,10 +27,11 @@ client.once("ready", async () => {
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
-    //axios.get(`${baseUrl}ec2-up`)
-    await interaction.reply({
-      //content: res.data, 
-      content: "サーバー起動中 "+res.data, 
+    await interaction.deferReply()
+    axios.get(`${baseUrl}ec2-up`)
+    await wait(4000)
+    await interaction.editReply({
+      content: res.data, 
       components: [
         new MessageActionRow().addComponents(stopbtn,IPbtn)
       ]
@@ -39,10 +40,9 @@ client.on('interactionCreate', async interaction => {
 
   //「停止」が押された時
   if (interaction.customId === 'stop') {
-    //axios.get(`${baseUrl}ec2-down`)
+    axios.get(`${baseUrl}ec2-down`)
     await interaction.reply({
-      //content: res.data, 
-      content: "サーバー停止中", 
+      content: res.data, 
       components: [
         new MessageActionRow().addComponents(startbtn)
       ]
