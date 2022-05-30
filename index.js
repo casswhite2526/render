@@ -13,32 +13,50 @@ client.once("ready", async () => {
 const startbtn = new MessageButton()
   .setCustomId("start")
   .setStyle("PRIMARY")
-  .setLabel("START")
+  .setLabel("起動")
 
 const stopbtn = new MessageButton()
 .setCustomId("stop")
 .setStyle("PRIMARY")
-.setLabel("STOP")
+.setLabel("停止")
 
 const IPbtn = new MessageButton()
 .setCustomId("ip")
 .setStyle("PRIMARY")
-.setLabel("IP")
+.setLabel("IP（クリップボードにコピー）")
+
+client.on('interactionCreate', async interaction => {
+  if (interaction.customId === 'start') {
+    axios.get(`${baseUrl}ec2-up`)
+    .then(res => {
+      message.reply(`サーバーを起動しました。`)
+		  message.reply(res.data)
+    })
+    .catch(err => {
+		  if (err.response.status == 400) {
+		    message.reply('既に起動しています。')
+		    message.reply(err.response.data)
+	  	}
+		  else {
+		    console.log(err.response.data)
+		    message.reply('error'+err.response.data)
+		  }
+    })
+  }
+})
 
 client.on('messageCreate', message => {
-
+  //ボタン表示
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
     .then(res => {
       if (res.data === 'サーバー停止済み'){
         message.reply({
           content: res.data, components: [
-            //new MessageActionRow().addComponents(startbtn)
-            new MessageActionRow().addComponents(stopbtn, IPbtn)
+            new MessageActionRow().addComponents(startbtn)
           ]
         })
       } 
-
       else if (res.data === 'サーバーは稼働中'){
         message.reply({
           content: res.data, components: [
@@ -46,69 +64,64 @@ client.on('messageCreate', message => {
           ]
         })
       }
-
       else {
         message.reply(
           "The server is in procces. Plese try again later."
         )
       }
-
     })
-  
   }
+
   // 起動
   if (message.content === '!mcstart') {
-	
     axios.get(`${baseUrl}ec2-up`)
-      .then(res => {
-        message.reply(`サーバーを起動しました。`)
-		message.reply(res.data)
-      })
-      .catch(err => {
-		if (err.response.status == 400) {
-		message.reply('既に起動しています。')
-		message.reply(err.response.data)
-		}
-		else {
-		console.log(err.response.data)
-		message.reply('error'+err.response.data)
-		}
-      })
+    .then(res => {
+      message.reply(`サーバーを起動しました。`)
+		  message.reply(res.data)
+    })
+    .catch(err => {
+		  if (err.response.status == 400) {
+		    message.reply('既に起動しています。')
+		    message.reply(err.response.data)
+		  }
+		  else {
+		    console.log(err.response.data)
+		    message.reply('error'+err.response.data)
+		  }
+    })
   }
 
   // 停止
-if (message.content === '!mcstop') {
-	axios.get(`${baseUrl}ec2-down`)
+  if (message.content === '!mcstop') {
+    axios.get(`${baseUrl}ec2-down`)
     .then(res => {
       message.reply('サーバーを停止しました。')
-	  
-  })
+    })
     .catch(err　=> {
       message.reply('既に停止しています。')
-  })
-}
-if (message.content === '!mcstatus') {
-	axios.get(`${baseUrl}ec2-status`)
-    .then(res => {
-      message.reply(res.data)
-	  
-  })
-  .catch(err　=> {
-    message.reply('error'+err.response.data)
-  })
-}
+    })
+  }
 
-if (message.content === '!mcip') {
-	axios.get(`${baseUrl}ec2-ip`)
+  // ステータス表示
+  if (message.content === '!mcstatus') {
+    axios.get(`${baseUrl}ec2-status`)
     .then(res => {
       message.reply(res.data)
-	  
-  })
-  .catch(err　=> {
+    })
+    .catch(err　=> {
+      message.reply('error'+err.response.data)
+    })
+  }
+  // IP表示
+  if (message.content === '!mcip') {
+    axios.get(`${baseUrl}ec2-ip`)
+    .then(res => {
+      message.reply(res.data)
+    })
+    .catch(err　=> {
     message.reply('サーバーは起動していません。')
-  })
-}
-
+    })
+  }
 });
 
 client.login(process.env.DISCORD_TOKEN)
