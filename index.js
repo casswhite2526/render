@@ -26,6 +26,7 @@ const IPbtn = new MessageButton()
 .setLabel("IP")
 
 client.on('messageCreate', message => {
+/*
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
     .then(res => {
@@ -53,7 +54,7 @@ client.on('messageCreate', message => {
   })
   }
 
-
+*/
   // 起動
   if (message.content === '!mcstart') {
 	
