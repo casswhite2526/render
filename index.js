@@ -33,7 +33,8 @@ client.on('messageCreate', message => {
       if (res.data === 'サーバー停止済み'){
         message.reply({
           content: res.data, components: [
-            new MessageActionRow().addComponents(startbtn)
+            //new MessageActionRow().addComponents(startbtn)
+            new MessageActionRow().addComponents(stopbtn, IPbtn)
           ]
         })
       } 
@@ -41,8 +42,7 @@ client.on('messageCreate', message => {
       else if (res.data === 'サーバーは稼働中'){
         message.reply({
           content: res.data, components: [
-            new MessageActionRow().addComponents(stopbtn), 
-            new MessageActionRow().addComponents(IPbtn),
+            new MessageActionRow().addComponents(stopbtn, IPbtn)
           ]
         })
       }
