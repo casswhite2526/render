@@ -44,12 +44,8 @@ client.on('interactionCreate', async interaction => {
       ]
     })
     client.user.setPresence({
-      activities: [{
-        name: "Minecraft Server",
-        status: "online",
-        type: "STREAMING",
-        URL: resdata,
-      }]
+      name: "Minecraft Server",
+      status: "online"
     })
   }
   
@@ -71,10 +67,8 @@ client.on('interactionCreate', async interaction => {
       ]
     })
     client.user.setPresence({
-      activities: [{
         name: "",
         status: "idle"
-      }]
     })
   }
 
