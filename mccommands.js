@@ -1,6 +1,6 @@
 
 //ボタン表示
-export default function mccommand () {
+export function mccommand () {
     if (message.content === '!mc') {
         axios.get(`${baseUrl}ec2-status`)
         .then(res => {
@@ -28,7 +28,7 @@ export default function mccommand () {
 }
 
 // 起動
-export default function startcommand () {
+export function startcommand () {
     if (message.content === '!mcstart') {
         axios.get(`${baseUrl}ec2-up`)
         .then(res => {
@@ -49,7 +49,7 @@ export default function startcommand () {
 }
 
 // 停止
-export default function stopcommand () {
+export function stopcommand () {
     if (message.content === '!mcstop') {
         axios.get(`${baseUrl}ec2-down`)
         .then(res => {
@@ -62,7 +62,7 @@ export default function stopcommand () {
 }
 
 // ステータス表示
-export default function statuscommand () {
+export function statuscommand () {
     if (message.content === '!mcstatus') {
         axios.get(`${baseUrl}ec2-status`)
         .then(res => {
@@ -75,7 +75,7 @@ export default function statuscommand () {
 }
 
 // IP表示
-export default function ipcommand () {
+export function ipcommand () {
     if (message.content === '!mcip') {
         axios.get(`${baseUrl}ec2-ip`)
         .then(res => {
