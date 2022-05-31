@@ -25,7 +25,7 @@ client.once("ready", async () => {
   console.log("Ready!");
 })
 
-client.on('interactionCreate', async interaction => {
+/*client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
     await interaction.deferReply()
@@ -70,7 +70,7 @@ client.on('interactionCreate', async interaction => {
     })
   }
 })
-
+*/
 client.on('messageCreate', message => {
   McCommand.mccommand()
   McCommand.startcommand()
