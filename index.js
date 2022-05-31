@@ -1,6 +1,7 @@
 import { Client, Intents } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
 import axios from 'axios'
+import * as McCommand from 'mccommands.js'
 
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
@@ -27,49 +28,58 @@ client.once("ready", async () => {
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
-    /*await interaction.deferReply()
+    await interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
     .then(res => {
-      await wait(4000)*/
-      //await interaction.editReply({
-      await interaction.reply({
-        //content: res.data
-        content: "start", 
-        components: [
-          new MessageActionRow().addComponents(stopbtn,IPbtn)
-        ]
-      })
-    //})   
+      await wait(4000)
+      await interaction.editReply({
+        await interaction.reply({
+          content: res.data,
+          content: "start", 
+          components: [
+            new MessageActionRow().addComponents(stopbtn,IPbtn)
+          ]
+        })
+      }) 
+    })  
   }
 
   //「停止」が押された時
   if (interaction.customId === 'stop') {
-    //axios.get(`${baseUrl}ec2-down`)
-    //.then(res => {
+    axios.get(`${baseUrl}ec2-down`)
+    .then(res => {
       await interaction.reply({
-        //content: res.data, 
+        content: res.data, 
         content: "stop",
         components: [
           new MessageActionRow().addComponents(startbtn)
         ]
       })
-    //})
+    })
   }
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
     await interaction.reply("IP")
-    /*axios.get(`${baseUrl}ec2-ip`)
+    axios.get(`${baseUrl}ec2-ip`)
     .then(res => {
     interaction.reply(res.data)
     })
     .catch(err　=> {
     interaction.reply('サーバーは起動していません。')
-    })*/
+    })
   }
 })
 
 client.on('messageCreate', message => {
+  McCommand.mccommand()
+  McCommand.startcommand()
+  McCommand.stopcommand()
+  McCommand.statuscommand()
+  McCommand.ipcommand()
+})
+
+/*client.on('messageCreate', message => {
   //ボタン表示
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
@@ -144,9 +154,9 @@ client.on('messageCreate', message => {
       message.reply(res.data)
     })
     .catch(err　=> {
-    message.reply('サーバーは起動していません。')
+      message.reply('サーバーは起動していません。')
     })
   }
 });
-
+*/
 client.login(process.env.DISCORD_TOKEN)
