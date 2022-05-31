@@ -82,7 +82,8 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = err.response.data
     })
-    clipboard.writeSync(resdata)
+    interaction.reply(resdata)
+    //clipboard.writeSync(`${resdata}`)
   }
 })
 
