@@ -94,14 +94,14 @@ client.on('messageCreate', message => {
     .then(res => {
       if (res.data === 'サーバー停止済み'){
         message.reply({
-          content: res.data, components: [
+          content: "サーバーは停止済みです。", components: [
             new MessageActionRow().addComponents(startbtn)
           ]
         })
       } 
       else if (res.data === 'サーバーは稼働中'){
         message.reply({
-          content: res.data, components: [
+          content: "サーバーは稼働中です。", components: [
             new MessageActionRow().addComponents(stopbtn, IPbtn)
           ]
         })
