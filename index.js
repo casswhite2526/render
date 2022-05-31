@@ -83,7 +83,7 @@ client.on('interactionCreate', async interaction => {
       resdata = err.response.data
     })
     //await xsel.set(`${resdata}`)
-    interaction.editReply(resdata)
+    interaction.reply(resdata)
   }
 })
 
