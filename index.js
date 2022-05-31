@@ -82,7 +82,7 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = err.response.data
     })
-    clipboard.writeSync(`${resdata}`)
+    await clipboard.writeSync(`${resdata}`)
     interaction.editReply("クリップボードにコピーしました。")
   }
 })
