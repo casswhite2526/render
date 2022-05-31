@@ -59,7 +59,6 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    interaction.reply("IP")
     axios.get(`${baseUrl}ec2-ip`)
     .then(res => {
       Clipboard.copy(res.data)
@@ -79,7 +78,7 @@ client.on('messageCreate', message => {
       if (res.data === 'サーバー停止済み'){
         message.reply({
           content: res.data, components: [
-            new MessageActionRow().addComponents(startbtn, stopbtn)
+            new MessageActionRow().addComponents(startbtn, stopbtn, IPbtn)
           ]
         })
       } 
