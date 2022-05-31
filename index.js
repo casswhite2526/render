@@ -82,8 +82,8 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = err.response.data
     })
-    await xsel.set(`${resdata}`)
-    interaction.editReply("クリップボードにコピーしました。")
+    //await xsel.set(`${resdata}`)
+    interaction.editReply(resdata)
   }
 })
 
