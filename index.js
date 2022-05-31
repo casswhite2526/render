@@ -87,7 +87,7 @@ client.on('interactionCreate', async interaction => {
     })*/
     //interaction.editReply(serverip)
     if (serverip != '') {
-      clipboard.writeSync(serverip)
+      clipboard.writeSync('hi')
     }
     
   }
