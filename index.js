@@ -47,7 +47,8 @@ client.on('interactionCreate', async interaction => {
       activities: [{
         name: "Minecraft Server",
         status: "online",
-        url: resdata,
+        type: "STREAMING",
+        URL: resdata,
       }]
     })
   }
