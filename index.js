@@ -30,42 +30,34 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'start') {
     interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
-    .then(res => {
-      interaction.editReply(
-        interaction.reply({
-          content: res.data,
-          content: "start", 
-          components: [
-            new MessageActionRow().addComponents(stopbtn,IPbtn)
-          ]
-        })
-      ) 
-    })  
+    interaction.editReply(
+      interaction.reply({
+        content: res.data,
+        content: "start", 
+        components: [
+          new MessageActionRow().addComponents(stopbtn,IPbtn)
+        ]
+      })
+    ) 
   }
+  
 
   //「停止」が押された時
   if (interaction.customId === 'stop') {
     axios.get(`${baseUrl}ec2-down`)
-    .then(res => {
-      interaction.reply({
-        content: res.data, 
-        content: "stop",
-        components: [
-          new MessageActionRow().addComponents(startbtn)
-        ]
-      })
+    interaction.reply({
+      content: res.data, 
+      content: "stop",
+      components: [
+        new MessageActionRow().addComponents(startbtn)
+      ]
     })
   }
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
     axios.get(`${baseUrl}ec2-ip`)
-    .then(res => {
-      Clipboard.copy(res.data)
-    })
-    .catch(err　=> {
-      interaction.reply('サーバーは起動していません。')
-    })
+    Clipboard.copy("a")
   }
 })
 
