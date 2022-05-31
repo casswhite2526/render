@@ -1,7 +1,7 @@
 import { Client, Intents } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
 import axios from 'axios'
-import * as McCommand from 'mccommands.js'
+import * as McCommand from './mccommands.js'
 
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
