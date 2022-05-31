@@ -1,7 +1,7 @@
 import { Client, Intents } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
 import axios from 'axios'
-import xsel from 'xsel'
+import clipboard from 'clipboardy'
 
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
@@ -82,8 +82,7 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = err.response.data
     })
-    //await xsel.set(`${resdata}`)
-    interaction.reply(resdata)
+    clipboard.writeSync(resdata)
   }
 })
 
