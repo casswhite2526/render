@@ -44,10 +44,10 @@ client.on('interactionCreate', async interaction => {
       ]
     })
     client.user.setPresence({
-      activity: {
-        name: "サーバーは稼働中"
-      },
-      status: "online"
+      activities: [{
+        name: "サーバーは稼働中",
+        status: "online"
+      }]
     })
   }
   
@@ -69,10 +69,10 @@ client.on('interactionCreate', async interaction => {
       ]
     })
     client.user.setPresence({
-      activity: {
-        name: "サーバー停止済み"
-      },
-      status: "idle"
+      activities: [{
+        name: "サーバー停止済み",
+        status: "idle"
+      }]
     })
   }
 
