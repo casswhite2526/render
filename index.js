@@ -1,7 +1,7 @@
 import { Client, Intents } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
 import axios from 'axios'
-import * as McCommand from './mccommands.js'
+import * as Clipboard from "clipboard"
 
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
@@ -25,14 +25,14 @@ client.once("ready", async () => {
   console.log("Ready!");
 })
 
-/*client.on('interactionCreate', async interaction => {
+client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
     await interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
     .then(res => {
       await wait(4000)
-      await interaction.editReply({
+      await interaction.editReply(
         await interaction.reply({
           content: res.data,
           content: "start", 
@@ -40,7 +40,7 @@ client.once("ready", async () => {
             new MessageActionRow().addComponents(stopbtn,IPbtn)
           ]
         })
-      }) 
+      ) 
     })  
   }
 
@@ -63,23 +63,16 @@ client.once("ready", async () => {
     await interaction.reply("IP")
     axios.get(`${baseUrl}ec2-ip`)
     .then(res => {
-    interaction.reply(res.data)
+      Clipboard.copy(res.data)
     })
     .catch(err　=> {
-    interaction.reply('サーバーは起動していません。')
+      interaction.reply('サーバーは起動していません。')
     })
   }
 })
-*/
-client.on('messageCreate', message => {
-  McCommand.mccommand(message)
-  McCommand.startcommand(message)
-  McCommand.stopcommand(message)
-  McCommand.statuscommand(message)
-  McCommand.ipcommand(message)
-})
 
-/*client.on('messageCreate', message => {
+
+client.on('messageCreate', message => {
   //ボタン表示
   if (message.content === '!mc') {
     axios.get(`${baseUrl}ec2-status`)
@@ -158,5 +151,5 @@ client.on('messageCreate', message => {
     })
   }
 });
-*/
+
 client.login(process.env.DISCORD_TOKEN)
