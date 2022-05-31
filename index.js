@@ -43,8 +43,11 @@ client.on('interactionCreate', async interaction => {
         new MessageActionRow().addComponents(stopbtn)
       ]
     })
-    client.user.setActivity({
-      name: "Minecraft Server"
+    client.user.setPresence({
+      activity: {
+        name: "サーバーは稼働中"
+      },
+      status: "online"
     })
   }
   
@@ -64,6 +67,12 @@ client.on('interactionCreate', async interaction => {
       components: [
         new MessageActionRow().addComponents(startbtn)
       ]
+    })
+    client.user.setPresence({
+      activity: {
+        name: "サーバー停止済み"
+      },
+      status: "idle"
     })
   }
 
