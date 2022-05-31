@@ -43,12 +43,10 @@ client.on('interactionCreate', async interaction => {
         new MessageActionRow().addComponents(stopbtn)
       ]
     })
-    client.user.setActivity(
-      "Minecraft Server"
-    )
-    client.user.setStatus(
-      "online"
-    )
+    client.user.setPresence({
+      name: "Minecraft Server",
+      status: "online"
+    })
   }
   
 
@@ -68,12 +66,10 @@ client.on('interactionCreate', async interaction => {
         new MessageActionRow().addComponents(startbtn)
       ]
     })
-    client.user.setActivity(
-      ""
-    )
-    client.user.setStats(
-      "idle"
-    )
+    client.user.setPresence({
+        name: "",
+        status: "idle"
+    })
   }
 
   //「IP」が押された時
