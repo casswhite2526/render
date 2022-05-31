@@ -1,6 +1,7 @@
 import { Client, Intents } from 'discord.js'
 import { MessageActionRow, MessageButton } from 'discord.js'
 import axios from 'axios'
+import clipboard from 'clipboardy'
 
 const baseUrl = process.env.LAMBDA_INVOKE_PATH
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
@@ -74,7 +75,6 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    interaction.deferReply()
     await axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
       resdata = res.data
@@ -82,7 +82,8 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = err.response.data
     })
-    interaction.editReply(resdata)
+    clipboard.writeSync(resdata)
+    interaction.editReply("クリップボードにコピーしました。")
   }
 })
 
