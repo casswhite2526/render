@@ -79,7 +79,7 @@ client.on('messageCreate', message => {
       if (res.data === 'サーバー停止済み'){
         message.reply({
           content: res.data, components: [
-            new MessageActionRow().addComponents(startbtn)
+            new MessageActionRow().addComponents(startbtn, stopbtn)
           ]
         })
       } 
