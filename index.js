@@ -26,6 +26,7 @@ client.once("ready", async () => {
 })
 
 let resdata = ""
+let serverip = ""
 
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
@@ -48,6 +49,7 @@ client.on('interactionCreate', async interaction => {
       name: "Minecraft Server",
       status: "online"
     })
+    serverip = resdata
   }
   
 
@@ -75,16 +77,19 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    interaction.deferReply()
-    await axios.get(`${baseUrl}ec2-ip`)
+    //interaction.deferReply()
+    /*await axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
       resdata = res.data
     })
     .catch(err =>{
       resdata = err.response.data
-    })
-    interaction.editReply(resdata)
-    //clipboard.writeSync(`${resdata}`)
+    })*/
+    //interaction.editReply(serverip)
+    if (serverip != '') {
+      clipboard.writeSync(serverip)
+    }
+    
   }
 })
 
