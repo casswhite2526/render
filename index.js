@@ -30,7 +30,7 @@ client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
     interaction.deferReply()
-    axios.get(`${baseUrl}ec2-up`)
+    await axios.get(`${baseUrl}ec2-up`)
     .then(res =>{
       resdata = res.data
     })
@@ -38,26 +38,25 @@ client.on('interactionCreate', async interaction => {
       resdata = "error"
     })
     interaction.editReply(
-      interaction.reply({
-        content: resdata,
-        components: [
-          new MessageActionRow().addComponents(stopbtn,IPbtn)
-        ]
-      })
+      content: resdata,
+      components: [
+        new MessageActionRow().addComponents(stopbtn,IPbtn)
+      ]
     ) 
   }
   
 
   //「停止」が押された時
   if (interaction.customId === 'stop') {
-    axios.get(`${baseUrl}ec2-down`)
+    interaction.deferReply()
+    await axios.get(`${baseUrl}ec2-down`)
     .then(res =>{
       resdata = res.data
     })
     .catch(err =>{
       resdata = "error"
     })
-    interaction.reply({
+    interaction.editReply({
       content: resdata, 
       components: [
         new MessageActionRow().addComponents(startbtn)
@@ -67,6 +66,7 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
+    interaction.deferReply()
     await axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
       resdata = res.data
@@ -74,7 +74,7 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = "error"
     })
-    interaction.reply(resdata)
+    interaction.editReply(resdata)
   }
 })
 
