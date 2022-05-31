@@ -30,9 +30,15 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'start') {
     interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
+    .then(res =>{
+      let resdata = res.data
+    })
+    .catch(err =>{
+      let resdata = "error"
+    })
     interaction.editReply(
       interaction.reply({
-        content: res.data,
+        content: resdata,
         content: "start", 
         components: [
           new MessageActionRow().addComponents(stopbtn,IPbtn)
