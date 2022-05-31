@@ -45,7 +45,7 @@ client.on('interactionCreate', async interaction => {
     })
     client.user.setPresence({
       activities: [{
-        name: "サーバーは稼働中",
+        name: "Minecraft Server",
         status: "online"
       }]
     })
@@ -70,7 +70,7 @@ client.on('interactionCreate', async interaction => {
     })
     client.user.setPresence({
       activities: [{
-        name: "サーバー停止済み",
+        name: "",
         status: "idle"
       }]
     })
