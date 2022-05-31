@@ -75,6 +75,7 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
+    interaction.deferReply()
     await axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
       resdata = res.data
@@ -82,7 +83,7 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = err.response.data
     })
-    interaction.reply(resdata)
+    interaction.editReply(resdata)
     //clipboard.writeSync(`${resdata}`)
   }
 })
