@@ -28,11 +28,11 @@ client.once("ready", async () => {
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
-    await interaction.deferReply()
+    interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
     .then(res => {
-      await interaction.editReply(
-        await interaction.reply({
+      interaction.editReply(
+        interaction.reply({
           content: res.data,
           content: "start", 
           components: [
@@ -47,7 +47,7 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'stop') {
     axios.get(`${baseUrl}ec2-down`)
     .then(res => {
-      await interaction.reply({
+      interaction.reply({
         content: res.data, 
         content: "stop",
         components: [
@@ -59,7 +59,7 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    await interaction.reply("IP")
+    interaction.reply("IP")
     axios.get(`${baseUrl}ec2-ip`)
     .then(res => {
       Clipboard.copy(res.data)
