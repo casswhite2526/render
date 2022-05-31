@@ -86,7 +86,6 @@ client.on('interactionCreate', async interaction => {
   }
 })
 
-
 client.on('messageCreate', message => {
   //ボタン表示
   if (message.content === '!mc') {
