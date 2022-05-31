@@ -77,7 +77,7 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    interaction.reply(serverip)
+    //interaction.reply(serverip)
     /*await axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
       resdata = res.data
@@ -87,6 +87,7 @@ client.on('interactionCreate', async interaction => {
     })*/
     //interaction.editReply()
     if (serverip != '') {
+      interaction.reply(serverip)
       clipboard.writeSync('hi')
     }
     
