@@ -42,7 +42,7 @@ client.on('interactionCreate', async interaction => {
     interaction.editReply({
       content: resdata,
       components: [
-        new MessageActionRow().addComponents(stopbtn)
+        new MessageActionRow().addComponents(stopbtn,IPbtn)
       ]
     })
     client.user.setPresence({
@@ -88,7 +88,7 @@ client.on('interactionCreate', async interaction => {
     //interaction.editReply()
     if (serverip != '') {
       interaction.reply(serverip)
-      ncp.copy(serverip)
+      ncp.copy("hi")
     }
     
   }
