@@ -40,7 +40,7 @@ client.on('interactionCreate', async interaction => {
     interaction.editReply({
       content: resdata,
       components: [
-        new MessageActionRow().addComponents(stopbtn,IPbtn)
+        new MessageActionRow().addComponents(stopbtn)
       ]
     }) 
   }
@@ -87,7 +87,7 @@ client.on('messageCreate', message => {
       if (res.data === 'サーバー停止済み'){
         message.reply({
           content: res.data, components: [
-            new MessageActionRow().addComponents(startbtn, stopbtn, IPbtn)
+            new MessageActionRow().addComponents(startbtn)
           ]
         })
       } 
