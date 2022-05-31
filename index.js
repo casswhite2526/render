@@ -72,11 +72,11 @@ client.once("ready", async () => {
 })
 */
 client.on('messageCreate', message => {
-  McCommand.mccommand()
-  McCommand.startcommand()
-  McCommand.stopcommand()
-  McCommand.statuscommand()
-  McCommand.ipcommand()
+  McCommand.mccommand(message)
+  McCommand.startcommand(message)
+  McCommand.stopcommand(message)
+  McCommand.statuscommand(message)
+  McCommand.ipcommand(message)
 })
 
 /*client.on('messageCreate', message => {
