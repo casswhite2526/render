@@ -57,7 +57,13 @@ client.on('interactionCreate', async interaction => {
   //「IP」が押された時
   if (interaction.customId === 'ip') {
     axios.get(`${baseUrl}ec2-ip`)
-    interaction.reply(res.data)
+    .then(res =>{
+      let ip = res.data
+    })
+    .catch(err =>{
+      let ip = "error"
+    })
+    interaction.reply(ip)
   }
 })
 
