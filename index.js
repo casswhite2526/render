@@ -31,7 +31,6 @@ client.on('interactionCreate', async interaction => {
     await interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
     .then(res => {
-      await wait(4000)
       await interaction.editReply(
         await interaction.reply({
           content: res.data,
