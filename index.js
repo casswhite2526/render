@@ -66,9 +66,9 @@ client.on('interactionCreate', async interaction => {
         new MessageActionRow().addComponents(startbtn)
       ]
     })
-    client.user.setPresence({
-        name: "",
-        status: "idle"
+    client.user.setActivity({
+      name: "",
+      status: "idle"
     })
   }
 
