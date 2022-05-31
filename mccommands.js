@@ -1,4 +1,6 @@
-
+import { Client, Intents } from 'discord.js'
+import { MessageActionRow, MessageButton } from 'discord.js'
+import axios from 'axios'
 //ボタン表示
 export function mccommand () {
     if (message.content === '!mc') {
