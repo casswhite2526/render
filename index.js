@@ -77,7 +77,7 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    interaction.reply()
+    interaction.reply('')
     /*await axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
       resdata = res.data
