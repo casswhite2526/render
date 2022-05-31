@@ -77,19 +77,19 @@ client.on('interactionCreate', async interaction => {
 
   //「IP」が押された時
   if (interaction.customId === 'ip') {
-    //interaction.reply(serverip)
-    /*await axios.get(`${baseUrl}ec2-ip`)
+    interaction.deferReply()
+    await axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
       resdata = res.data
     })
     .catch(err =>{
       resdata = err.response.data
-    })*/
-    //interaction.editReply()
-    if (serverip != '') {
+    })
+    interaction.editReply(resdata)
+    /*if (serverip != '') {
       interaction.reply(serverip)
-      ncp.copy("hi")
-    }
+      //ncp.copy("hi")
+    }*/
     
   }
 })
