@@ -6,9 +6,9 @@ const baseUrl = process.env.LAMBDA_INVOKE_PATH
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 const startbtn = new MessageButton()
-  .setCustomId("start")
-  .setStyle("PRIMARY")
-  .setLabel("起動")
+.setCustomId("start")
+.setStyle("PRIMARY")
+.setLabel("起動")
 
 const stopbtn = new MessageButton()
 .setCustomId("stop")
@@ -42,7 +42,12 @@ client.on('interactionCreate', async interaction => {
       components: [
         new MessageActionRow().addComponents(stopbtn)
       ]
-    }) 
+    })
+    client.user.setPresence({
+      game: {
+        name: "Minecraft Server"
+      }
+    })
   }
   
 
