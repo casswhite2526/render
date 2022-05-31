@@ -51,8 +51,14 @@ client.on('interactionCreate', async interaction => {
   //「停止」が押された時
   if (interaction.customId === 'stop') {
     axios.get(`${baseUrl}ec2-down`)
+    .then(res =>{
+      let resdata = res.data
+    })
+    .catch(err =>{
+      let resdata = "error"
+    })
     interaction.reply({
-      content: res.data, 
+      content: resdata, 
       content: "stop",
       components: [
         new MessageActionRow().addComponents(startbtn)
