@@ -35,7 +35,7 @@ client.on('interactionCreate', async interaction => {
       resdata = res.data
     })
     .catch(err =>{
-      resdata = "error"
+      resdata = err.response.data
     })
     interaction.editReply({
       content: resdata,
@@ -54,7 +54,7 @@ client.on('interactionCreate', async interaction => {
       resdata = res.data
     })
     .catch(err =>{
-      resdata = "error"
+      resdata = err.response.data
     })
     interaction.editReply({
       content: resdata, 
@@ -72,7 +72,7 @@ client.on('interactionCreate', async interaction => {
       resdata = res.data
     })
     .catch(err =>{
-      resdata = "error"
+      resdata = err.response.data
     })
     interaction.editReply(resdata)
   }
