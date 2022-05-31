@@ -43,10 +43,8 @@ client.on('interactionCreate', async interaction => {
         new MessageActionRow().addComponents(stopbtn)
       ]
     })
-    client.user.setPresence({
-      game: {
-        name: "Minecraft Server"
-      }
+    client.user.setActivity({
+      name: "Minecraft Server"
     })
   }
   
