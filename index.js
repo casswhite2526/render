@@ -25,16 +25,18 @@ client.once("ready", async () => {
   console.log("Ready!");
 })
 
+let resdata = ""
+
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
   if (interaction.customId === 'start') {
     interaction.deferReply()
     axios.get(`${baseUrl}ec2-up`)
     .then(res =>{
-      let resdata = res.data
+      resdata = res.data
     })
     .catch(err =>{
-      let resdata = "error"
+      resdata = "error"
     })
     interaction.editReply(
       interaction.reply({
@@ -52,10 +54,10 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'stop') {
     axios.get(`${baseUrl}ec2-down`)
     .then(res =>{
-      let resdata = res.data
+      resdata = res.data
     })
     .catch(err =>{
-      let resdata = "error"
+      resdata = "error"
     })
     interaction.reply({
       content: resdata, 
@@ -70,10 +72,10 @@ client.on('interactionCreate', async interaction => {
   if (interaction.customId === 'ip') {
     axios.get(`${baseUrl}ec2-ip`)
     .then(res =>{
-      let ip = res.data
+      resdata = res.data
     })
     .catch(err =>{
-      let ip = "error"
+      resdata = "error"
     })
     interaction.reply(ip)
   }
