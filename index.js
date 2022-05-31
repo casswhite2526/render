@@ -41,7 +41,6 @@ client.on('interactionCreate', async interaction => {
     interaction.editReply(
       interaction.reply({
         content: resdata,
-        content: "start", 
         components: [
           new MessageActionRow().addComponents(stopbtn,IPbtn)
         ]
@@ -61,7 +60,6 @@ client.on('interactionCreate', async interaction => {
     })
     interaction.reply({
       content: resdata, 
-      content: "stop",
       components: [
         new MessageActionRow().addComponents(startbtn)
       ]
@@ -77,7 +75,7 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = "error"
     })
-    interaction.reply(ip)
+    interaction.reply(resdata)
   }
 })
 
