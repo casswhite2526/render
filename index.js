@@ -37,12 +37,12 @@ client.on('interactionCreate', async interaction => {
     .catch(err =>{
       resdata = "error"
     })
-    interaction.editReply(
+    interaction.editReply({
       content: resdata,
       components: [
         new MessageActionRow().addComponents(stopbtn,IPbtn)
       ]
-    ) 
+    }) 
   }
   
 
