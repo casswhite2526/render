@@ -26,6 +26,27 @@ client.once("ready", async () => {
 
 let resdata = ""
 let serverip = ""
+let serveron = ""
+
+const checkserver = function(){
+  axios.get(`${baseUrl}ec2-status`)
+  .then(res => {
+    consolse.log("server is online")
+  })
+  .catch(err　=> {
+    client.channels.cache.get(971816930589679656).send({
+      content: "サーバーを自動停止しました。", 
+      components: [
+        new MessageActionRow().addComponents(startbtn)
+      ]
+    })
+    serveron = false
+  })
+}
+
+if (serveron = true) {
+  setInterval(checkserver, 300000)
+}
 
 client.on('interactionCreate', async interaction => {
   //「起動」が押された時
@@ -49,6 +70,7 @@ client.on('interactionCreate', async interaction => {
       status: "online"
     })
     serverip = resdata
+    serveron = true
   }
   
 
@@ -72,6 +94,7 @@ client.on('interactionCreate', async interaction => {
         name: "",
         status: "idle"
     })
+    serveron = false
   }
 
   //「IP」が押された時
