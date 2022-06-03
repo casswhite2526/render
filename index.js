@@ -29,7 +29,7 @@ let serverip = ""
 let serveron = true
 
 const checkserver = function(){
-  await axios.get(`${baseUrl}ec2-status`)
+  axios.get(`${baseUrl}ec2-status`)
   .then(res => {
     serveron = true
   })
