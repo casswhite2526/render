@@ -31,7 +31,7 @@ let serveron = ""
 const checkserver = function(){
   axios.get(`${baseUrl}ec2-status`)
   .then(res => {
-    if (res.data === "running" || "pending"){
+    if (res.data === "サーバーは保留中" || "サーバーは稼働中"){
       serveron = true
       console.log("server is online")
     }
