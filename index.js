@@ -37,22 +37,19 @@ const checkserver = function(){
       console.log("t")
     }
     else{
-      serveron = false
       console.log(res.data)
       console.log("f")
+      client.channels.cache.get(796683687378419717).send(
+        "サーバーを自動停止しました。"
+      )
+      serveron = false
     }
-
   })
-
-  if (serveron = false){
-    client.channels.cache.get(796683687378419717).send(
-      "サーバーを自動停止しました。"
-    )
-  }
 }
 
-if (serveron = true) {
+if (serveron == true) {
   setInterval(checkserver, 60000)
+  console.log("check")
 }
 
 client.on('interactionCreate', async interaction => {
