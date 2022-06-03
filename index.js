@@ -26,26 +26,26 @@ client.once("ready", async () => {
 
 let resdata = ""
 let serverip = ""
-let serveron = ""
+let serveron = true
 
 const checkserver = function(){
-  axios.get(`${baseUrl}ec2-status`)
+  await axios.get(`${baseUrl}ec2-status`)
   .then(res => {
-    consolse.log("server is online")
+    serveron = true
   })
   .catch(err　=> {
-    client.channels.cache.get(971816930589679656).send({
-      content: "サーバーを自動停止しました。", 
-      components: [
-        new MessageActionRow().addComponents(startbtn)
-      ]
-    })
     serveron = false
   })
+
+  if (serveron = false){
+    client.channels.cache.get(796683687378419717).send(
+      "サーバーを自動停止しました。"
+    )
+  }
 }
 
 if (serveron = true) {
-  setInterval(checkserver, 300000)
+  setInterval(checkserver, 60000)
 }
 
 client.on('interactionCreate', async interaction => {
