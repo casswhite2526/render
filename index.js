@@ -33,7 +33,7 @@ const checkserver = function(){
   .then(res => {
     if (res.data === "サーバーは保留中" || "サーバーは稼働中"){
       serveron = true
-      console.log("server is online")
+      console.log(res.data)
     }
     else{
       serveron = false
