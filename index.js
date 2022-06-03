@@ -31,12 +31,15 @@ let serveron = ""
 const checkserver = function(){
   axios.get(`${baseUrl}ec2-status`)
   .then(res => {
-    serveron = true
-    console.log("server is online")
-  })
-  .catch(err　=> {
-    serveron = false
-    console.log("server is offline")
+    if (res.data === "running" || "pending"){
+      serveron = true
+      console.log("server is online")
+    }
+    else{
+      serveron = false
+      console.log("server is offline")
+    }
+
   })
 
   if (serveron = false){
