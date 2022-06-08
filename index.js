@@ -28,6 +28,7 @@ let resdata = ""
 let serverip = ""
 let serveron = ""
 
+
 const checkserver = function(){
   axios.get(`${baseUrl}ec2-status`)
   .then(res => {
