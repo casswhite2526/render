@@ -67,7 +67,7 @@ client.on('interactionCreate', async interaction => {
     interaction.editReply({
       content: resdata,
       components: [
-        new MessageActionRow().addComponents(stopbtn,IPbtn)
+        new MessageActionRow().addComponents(stopbtn)
       ]
     })
     client.user.setPresence({
